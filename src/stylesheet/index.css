@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    
+    font-size: 1.6vh;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+
+    white-space: nowrap;
+}
+
+
+#effect {
+    position: absolute;
+    
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 1;
+    pointer-events: none;
+
+    animation: hueRotate 600s linear 0s infinite;
+}
+@keyframes hueRotate {
+    from {
+        backdrop-filter: hue-rotate(0deg);
+    }
+    to {
+        backdrop-filter: hue-rotate(360deg);
+    }
+}
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+header {
+    flex: 1;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: rgb(201, 28, 28);
+    filter: hue-rotate(0deg);
+
+    color: #fff;
+    font-size: 1.7em;
+    text-shadow: 0.2vh 0.2vh 0 #000;
+
+    transition: filter 0.3s cubic-bezier(.72,1.61,.47,.31);
+}
+header::after {
+    position: absolute;
+
+    width: 100vw;
+    text-align: center;
+
+    content: attr(text);
+}
+#mainContainer {
+    flex: 18;
+
+    display: flex;
+}
+footer {
+    flex: 1;
+}
+
+/* Tab Nav */
+#mainContainer > nav {
+    flex: 2;
+
+    background-color: rgb(64, 89, 231);
+}
+/* Main Content */
+#mainContainer > main {
+    flex: 11;
+}
+/* Achievement */
+#mainContainer > aside {
+    flex: 3;
+
+    padding: 0vh;
+
+    background-color: rgb(98, 121, 247);
+}
+
+#mainContainer > main {
+    flex: 5;
+
+    background-color: rgb(233, 233, 233);
+    font-size: 8em;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #666;
+}
