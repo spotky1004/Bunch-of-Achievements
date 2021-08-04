@@ -21,7 +21,7 @@
     z-index: 1;
     pointer-events: none;
 
-    animation: hueRotate 600s linear 0s infinite;
+    animation: hueRotate 1000s linear 0s infinite;
 }
 @keyframes hueRotate {
     from {
@@ -90,7 +90,8 @@ footer {
 #mainContainer > aside {
     flex: 3;
 
-    padding: 0vh;
+    display: flex;
+    flex-direction: column;
 
     background-color: rgb(98, 121, 247);
 }

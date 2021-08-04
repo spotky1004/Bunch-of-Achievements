@@ -1,0 +1,60 @@
+#achievements > .title {
+    flex: 1;
+
+    padding-left: 2vh;
+    background-color: #0002;
+
+    font-size: 2em;
+}
+#achievementWarp {
+    flex: 18;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    overflow-y: auto;
+}
+#achievementWarp::-webkit-scrollbar {
+    width: 10px;
+}
+#achievementWarp::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+}
+#achievementWarp::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+.achievementItem {
+    flex: 0 0 15%;
+
+    margin: 2% 3% 4% 3%;
+
+    height: 10vh;
+
+    border-radius: 1.5vh;
+    background-color: #fff3;
+    box-shadow: 0.8vh 0.8vh 0 #3338;
+    
+    overflow: hidden;
+}
+.achievementItem > * {
+    margin-left: 1.2vh;
+}
+.achievementItem > .title::after {
+    color: rgb(27, 39, 107);
+    font-weight: bold;
+    text-decoration: underline;
+
+    font-size: 1.6em;
+}
+.achievementItem > .description::after {
+    font-size: 0.9em;
+    white-space: normal;
+}
+.achievementItem > *::after {
+    content: attr(data-text);
+}
