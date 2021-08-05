@@ -90,9 +90,6 @@ footer {
 #mainContainer > aside {
     flex: 3;
 
-    display: flex;
-    flex-direction: column;
-
     background-color: rgb(98, 121, 247);
 }
 

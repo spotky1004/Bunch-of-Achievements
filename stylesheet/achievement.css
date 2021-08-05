@@ -1,5 +1,5 @@
 #achievements > .title {
-    flex: 1;
+    height: 4.4vh;
 
     padding-left: 2vh;
     background-color: #0002;
@@ -7,13 +7,9 @@
     font-size: 2em;
 }
 #achievementWarp {
-    flex: 18;
+    height: 86vh;
 
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 #achievementWarp::-webkit-scrollbar {
     width: 10px;
@@ -29,11 +25,12 @@
 }
 
 .achievementItem {
-    flex: 0 0 15%;
+    height: 11%;
 
     margin: 2% 3% 4% 3%;
 
-    height: 10vh;
+    display: flex;
+    flex-direction: column;
 
     border-radius: 1.5vh;
     background-color: #fff3;
@@ -44,16 +41,21 @@
 .achievementItem > * {
     margin-left: 1.2vh;
 }
-.achievementItem > .title::after {
+.achievementItem > .title {
+    flex: 1;
+
+    font-size: 1.6em;
     color: rgb(27, 39, 107);
     font-weight: bold;
     text-decoration: underline;
-
-    font-size: 1.6em;
 }
-.achievementItem > .description::after {
-    font-size: 0.9em;
+.achievementItem > .description {
+    flex: 3;
+
+    font-size: 0.85em;
     white-space: normal;
+
+    overflow: hidden;
 }
 .achievementItem > *::after {
     content: attr(data-text);

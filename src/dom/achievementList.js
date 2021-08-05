@@ -24,7 +24,7 @@ for (const key in Achievements) {
 
 
 
-    Cache[key] = item;
+    Cache[key] = { item, title, description };
     parant.appendChild(item);
 }
 
