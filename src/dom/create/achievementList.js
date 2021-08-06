@@ -1,4 +1,4 @@
-import Achievements from "../data/achievements.js";
+import Achievements from "../../data/achievements.js";
 
 const parant = document.getElementById("achievementWarp");
 
