@@ -19,5 +19,6 @@ const Event = {
 console.log(Event);
 
 
+import EventWork from "./eventWork.js";
 
-export { Cache as DomCache, Event as EventData };
+export { Cache as DomCache, Event as EventData, EventWork};

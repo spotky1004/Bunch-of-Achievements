@@ -1,7 +1,5 @@
-import { DomCache, EventData } from "./dom/init.js";
+import { DomCache, EventData, EventWork } from "./dom/init.js";
 import IsaveData from "./types/saveData.js";
-
-window.EventData = EventData;
 
 /**
  * @param {IsaveData} saveData 
@@ -11,6 +9,17 @@ function save(saveData, key="BunchOfAchievements_TestSave") {
     saveData
 }
 
-setInterval(function() {
-    console.log(EventData.Mouse)
-}, 1000);
+let lastTime = new Date().getTime();
+/**
+ * @param {number} dt 
+ */
+function gameTick() {
+    const dt = new Date().getTime() - lastTime;
+
+    for (const name in EventWork) {
+        EventWork[name]();
+    }
+
+    requestAnimationFrame(gameTick);
+}
+requestAnimationFrame(gameTick);

@@ -7,11 +7,11 @@ import * as EventUtil from "../../util/eventUtil.js";
  * @property {number} counter
  * 
  * @property {Object} target
- * @property {?HTMLElement} target.click
+ * @property {?HTMLElement} target.hold
  * @property {?HTMLElement} target.hover
  * 
  * @property {boolean} isMouseDown
- * @property {moveLength} dragLength
+ * @property { {x: number, y: number} } dragLength
  * 
  * @property {?MouseEvent} raw
  */
@@ -25,13 +25,13 @@ let EventData = {
 
     // Important
     target: {
-        click: null,
+        hold: null,
         hover: null
     },
 
     // Computed
     isMouseDown: false,
-    dragLength: [0, 0],
+    dragLength: {x: 0, y: 0},
 
     // Raw
     raw: null,
@@ -43,11 +43,13 @@ document.addEventListener("mousedown", function(e) {
     EventData.counter++;
 
     EventData.isMouseDown = true;
-    EventData.target.click = e.target;
-    EventData.dragLength = [0, 0];
+    EventData.target.hold = e.target;
+    EventData.dragLength = {x: 0, y: 0};
 });
 document.addEventListener("mouseup", function(e) {
+    EventData.target.hold = null;
     EventData.isMouseDown = false;
+    EventData.dragLength = {x: 0, y: 0};
 });
 
 document.addEventListener("mousemove", function(e) {
@@ -55,8 +57,8 @@ document.addEventListener("mousemove", function(e) {
 
     if (EventData.isMouseDown) {
         const movement = EventUtil.pxToRatio(e.movementX, e.movementY);
-        EventData.dragLength[0] += movement.x;
-        EventData.dragLength[1] += movement.y;
+        EventData.dragLength.x += movement.x;
+        EventData.dragLength.y += movement.y;
     }
 });
 
