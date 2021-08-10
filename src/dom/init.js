@@ -1,24 +1,6 @@
-/**
- * Create
- */
-import AchievementList from "./create/achievementList.js";
+import DomCache from "./create/_index.js";
+import EventData from "./event/_index.js";
+import DomUpdate from "./update/_index.js";
+import * as EventWork from "./eventWork.js";
 
-const Cache = {
-    AchievementList
-};
-console.log(Cache);
-
-/**
- * Event
- */
-import Mouse from "./event/mouse.js";
-
-const Event = {
-    Mouse
-};
-console.log(Event);
-
-
-import EventWork from "./eventWork.js";
-
-export { Cache as DomCache, Event as EventData, EventWork};
+export { DomCache, EventData, DomUpdate, EventWork};

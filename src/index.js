@@ -9,6 +9,10 @@ function save(saveData, key="BunchOfAchievements_TestSave") {
     saveData
 }
 
+function updateAll() {
+    
+}
+
 let lastTime = new Date().getTime();
 /**
  * @param {number} dt 
