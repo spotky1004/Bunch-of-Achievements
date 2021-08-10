@@ -1,6 +1,10 @@
-const IsaveData = {
-    point: Decimal,
-    achievements: ["string"],
-}
+import Decimal from "../../lib/decimal.mjs";
 
-export default IsaveData;
+export default {
+    // Progress
+    Point: Decimal,
+    Achievements: ["string"],
+
+    // Stat
+    StartTime: new Number(),
+};

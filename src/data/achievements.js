@@ -1,14 +1,22 @@
 import { Achievement } from "../class/Achievement.js";
+import SaveData from "../types/saveData.js";
 
 /**
- * @typedef { { title: string, description: string } } AchievementConstructor
+ * @typedef {object} AchievementConstructor
+ * @property {string} title
+ * @property {string} description
+ * @property {function(SaveData): number} progressCheck
+ */
+
+/**
  * @type { Object.<string, AchievementConstructor[]> }
  */
 const AchievementData = {
     TimePlay: [
         {
             title: "Play 10 Seconds",
-            description: "Welcome to the game which is an Achievement achievement game that has a lot of achievements to achieve! Your goal is to achieve as many as achievements. This statement is very long... blah blah blah... At this point, text may be cut down to half. At this point, most monitors can't see this text. At this point, no one can see this... What? How. You hacker. Anyway, import \"Cheat3r\" to earn the secret achievement."
+            description: "Welcome to the game which is an Achievement achievement game that has a lot of achievements to achieve! Your goal is to achieve as many as achievements. This statement is very long... blah blah blah... At this point, text may be cut down to half. At this point, most monitors can't see this text. At this point, no one can see this... What? How. You hacker. Anyway, import \"Cheat3r\" to earn the secret achievement.",
+            progressCheck: (saveData) => {return (new Date().getTime() - saveData.StartTime)/1000}
         },
         {
             title: "Play 100 Seconds",

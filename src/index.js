@@ -1,29 +1,50 @@
-import { DomCache, EventData, EventWork } from "./dom/init.js";
-import IsaveData from "./types/saveData.js";
+import Decimal from "../lib/decimal.mjs";
 
-/**
- * @param {IsaveData} saveData 
- * @param {string} key 
- */
-function save(saveData, key="BunchOfAchievements_TestSave") {
-    saveData
-}
+import { DomCache, EventData, DomUpdate, EventWork } from "./dom/init.js";
+import Update from "./update/_index.js"
+import SaveData from "./types/saveData.js";
+import * as SaveLoad from "./util/SaveLoad.js";
 
-function updateAll() {
-    
-}
+
+
+/** @type {SaveData} */
+let saveData = SaveLoad.Load();
+window.saveData = saveData;
 
 let lastTime = new Date().getTime();
+let lastSave = new Date().getTime();
 /**
  * @param {number} dt 
  */
 function gameTick() {
-    const dt = new Date().getTime() - lastTime;
+    // Time
+    const now = new Date().getTime();
+    const dt = now - lastTime;
+    lastTime = now;
+    if (now - lastSave > 5000) {
+        SaveLoad.Save(saveData);
+        lastSave = now;
+    } 
 
-    for (const name in EventWork) {
-        EventWork[name]();
+    // Update Game
+    for (const section in Update) {
+        const _Section = Update[section];
+        for (const key in _Section) {
+            _Section[key](saveData, dt);
+        }
+    }
+
+    // EventWork
+    for (const name in EventWork) EventWork[name]();
+
+    // Update DOM
+    for (const section in DomUpdate) {
+        const _Section = DomUpdate[section];
+        for (const key in _Section) {
+            _Section[key](saveData);
+        }
     }
 
     requestAnimationFrame(gameTick);
 }
-requestAnimationFrame(gameTick);
+requestAnimationFrame(gameTick); // init

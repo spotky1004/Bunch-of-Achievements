@@ -2,6 +2,9 @@ import Achievements from "../../data/achievements.js";
 
 const parant = document.getElementById("achievementWarp");
 
+/**
+ * @type { Object.<string, {item: HTMLElement, title: HTMLElement, description: HTMLElement}> }
+ */
 const Cache = {};
 for (const key in Achievements) {
     const achievement = Achievements[key];
