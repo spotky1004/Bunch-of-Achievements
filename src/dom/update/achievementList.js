@@ -15,10 +15,10 @@ export function ProgressDisplay(saveData) {
         const _Cache = AchievementElements[key];
 
         const diff = 5*(1 - _Achievement.progress);
-        _Cache.item.style.background = `background(
+        _Cache.title.style.background = `linear-gradient(
             90deg,
-            rgb(3, 16, 94) ${_Achievement.progress-diff}%,
-            #0008 ${_Achievement.progress}%
+            rgb(3, 16, 94) ${_Achievement.progress*100-diff}%,
+            #0008 ${_Achievement.progress*100}%
         )`;
     }
 }

@@ -30,7 +30,7 @@ function gameTick() {
     for (const section in Update) {
         const _Section = Update[section];
         for (const key in _Section) {
-            _Section[key](saveData, dt);
+            _Section[key]({ saveData, dt, EventData });
         }
     }
 

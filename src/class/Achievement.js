@@ -1,3 +1,5 @@
+import SaveData from "../types/saveData.js";
+
 export class Achievement {
     constructor({ title, description, progressCheck }) {
         this.title = title ?? "PlaceHolder";
@@ -30,8 +32,14 @@ export class Achievement {
      */
     completed = new Boolean;
 
+    /**
+     * @param {SaveData} saveData 
+     * @returns {number} - Progress of the Achievemenmt.
+     */
     check(saveData) {
-        this.progress = Math.min( 1, Math.max(this.progress, progressCheck(saveData)) );
+        this.progress = Math.min( 1, Math.max(this.progress, this.progressCheck(saveData)) );
         if (this.progress >= 1) this.completed = true;
+
+        return this.progress;
     }
 }
